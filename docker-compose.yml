@@ -1,0 +1,60 @@
+version: "3"
+
+services:
+  # backend Service with nestjs-express framework
+  backend:
+    build:
+      context: "./server"
+      dockerfile: Dockerfile
+      args:
+        NODE_VERSION: ${NODE_VERSION}
+    volumes:
+      - ./server:/usr/src/app
+    ports:
+      - "${BACK_PORT}:${BACK_PORT}"
+    networks:
+      - network
+    environment:
+      NODE_ENV: development
+      MODE: DEV
+      PORT: ${BACK_PORT}
+      FRONT_URL: ${FRONT_URL}
+      BASE_URL: ${API_URL}
+    env_file:
+      - credentials.env
+    command: sh -c "rm -rf ./dist && npm install --loglevel=error && npm run start:dev"
+    depends_on:
+      - postgres
+
+  # PostgreSQL Service
+  postgres:
+    image: postgres:${POSTGRES_VERSION}
+    networks:
+      - network
+    restart: on-failure
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - ./postgresdata:/var/lib/postgresql/data
+    container_name: ${POSTGRES_NAME}
+
+  # Adminer (db management tool)
+  adminer:
+    image: adminer:${ADMINER_VERSION}
+    networks:
+      - network
+    restart: on-failure
+    ports:
+      - "8000:${FRONT_PORT}"
+    environment:
+      ADMINER_DEFAULT_DB_DRIVER: ${DB_DRIVER}
+      ADMINER_DEFAULT_SERVER: ${DB_HOST}
+      ADMINER_DEFAULT_DB_NAME: ${DB_NAME}
+    depends_on:
+      - postgres
+
+  # Networks
+networks:
+  network:
