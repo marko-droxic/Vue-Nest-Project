@@ -55,6 +55,27 @@ services:
     depends_on:
       - postgres
 
+  # frontend Vue service
+  frontend:
+    build:
+      context: "./client"
+      dockerfile: Dockerfile
+      args:
+        NODE_VERSION: ${NODE_VERSION}
+    volumes:
+      - ./client:/usr/src/app
+    ports:
+      - "${FRONT_PORT}:${FRONT_PORT}"
+    networks:
+      - network
+    environment:
+      NODE_ENV: development
+      VUE_APP: ${API_URL}
+    command: sh -c "rm -rf ./dist && npm install --loglevel=error && npm run dev"
+    depends_on:
+      - postgres
+      - backend
+
   # Networks
 networks:
   network:

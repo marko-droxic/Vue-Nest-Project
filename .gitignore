@@ -14,11 +14,9 @@ node_modules/
 /credentials.env
 /postgresdata
 
+
 # Client
 /client/node_modules
-
-# Server
-
 /server/dist
 /server/node_modules
 
