@@ -16,8 +16,11 @@ NB: the installation process may take some time
 ```sh
 $ git clone https://github.com/marko-droxic/Vue-Nest-Project.git jobs_project
 $ cd jobs_project
+$ rename .env.example to .env
 $ docker-compose up --build
 ```
+
+Wait a little till all containers build 
 
 Open your default browser and go to:
 
