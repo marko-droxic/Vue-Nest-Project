@@ -1,56 +1,71 @@
 <template>
   <section class="job-list">
     <b-button variant="primary" @click="addJob">Add Job </b-button>
-    <b-table striped hover :items="items"  :fields="fields">
-      <template v-slot:cell(actions)="{ item }">
-        <div>
-          <b-btn  @click="editItem(item)">Edit</b-btn>
-          <b-btn variant="danger" class="m-1" @click="removeItem(item)">Remove</b-btn>
-        </div>
-      </template>
-    </b-table>
-    <b-pagination
-        v-model="page"
-        :total-rows="total"
-        :per-page="perPage"
-        aria-controls="my-table"
-    ></b-pagination>
+    <b-dropdown id="dropdown-1" text="Export Jobs" class="m-md-2">
+      <b-dropdown-item @click="exportJobs">Export as CSV</b-dropdown-item>
+    </b-dropdown>
+    <div class="jobs-table" v-if="items.length">
+      <jobs-table :jobs="items" :page="page" :total="total" @pageChange="onPageChange" @refreshList="refreshList"/>
+    </div>
+    <div v-else>
+      <h3>Currently there are not Jobs please create new ones</h3>
+    </div>
   </section>
 </template>
 <script lang="ts">
 
+import JobsTable from '../components/jobs/JobList.vue';
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  components: {
+    JobsTable
+  },
   data() {
     return {
-      items: [
-        { id: "1", name: 'Dickerson', description: 'Macdonald' },
-        { id: "2", name: 'Larsen', description: 'Shaw' },
-        { id: "3",name: 'Geneva', description: 'Wilson' },
-        { id: "4", name: 'Jami', description: 'Carney' }
-      ],
-      fields: ["name", "description", "actions"],
-      page: 0,
+      items: [],
+      total: 0,
+      page: 1,
       perPage: 5,
-      total: 20
+    }
+  },
+  async mounted () {
+    try {
+      const { data } = await this.$api.get(`/jobs?page=${this.page}&limit=${this.perPage}`);
+      this.total = data.total;
+      this.items = data.data;
+    } catch (e) {
+      console.log(e)
     }
   },
   methods: {
     addJob() {
       this.$router.push({ path: '/add-job' })
     },
-    editItem(item: any) {
-      const { id } = item;
-      this.$router.push({ path: `/job/${id}` })
+    async onPageChange(pageNumber: number) {
+      // todo combine similar method calls
+      this.page = pageNumber;
+      try {
+        const { data } = await this.$api.get(`/jobs?page=${this.page}&limit=${this.perPage}`);
+        this.total = data.total;
+        this.items = data.data;
+      } catch (e) {
+        console.log(e)
+      }
     },
-    removeItem(item: any) {
-      const { id } = item;
-      console.log('Item', id)
-    }
+    async refreshList() {
+      try {
+        const { data } = await this.$api.get(`/jobs?page=${this.page}&limit=${this.perPage}`);
+        this.total = data.total;
+        this.items = data.data;
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    exportJobs() {
+      console.log('Export jobbb')
+    },
+
   }
 })
 </script>
-<style>
-
-</style>

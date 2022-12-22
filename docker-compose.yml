@@ -28,7 +28,7 @@ services:
 
   # PostgreSQL Service
   postgres:
-    image: postgres:${POSTGRES_VERSION}
+    image: postgres
     networks:
       - network
     restart: on-failure

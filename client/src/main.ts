@@ -14,7 +14,7 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use({
   install: (Vue) => {
-    Vue.prototype.$api = axios({ baseUrl: 'http://localhost:8000/'})
+    Vue.prototype.$api = axios({ baseUrl: 'http://localhost:3000/'})
   }
 })
 
