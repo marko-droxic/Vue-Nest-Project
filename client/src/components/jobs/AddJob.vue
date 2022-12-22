@@ -1,8 +1,8 @@
 <template>
-  <div class="add-job-form">
-    <b-form @submit="onJobSubmit">
+  <div class="add-job-form mt-3">
+    <b-form @submit="onJobSubmit" @reset="onReset">
       <b-row>
-        <b-col cols="6">
+        <BCol cols="6">
           <b-form-group
               id="input-group-1"
               label="Job name"
@@ -16,9 +16,9 @@
                 required
             ></b-form-input>
           </b-form-group>
-        </b-col>
+        </BCol>
       </b-row>
-      <b-row>
+      <b-row class="mt-2">
         <b-col cols="6">
           <b-form-group id="input-group-2" label="Job description" label-for="input-2">
             <b-form-textarea
@@ -33,8 +33,9 @@
         </b-col>
       </b-row>
       <div class="mt-3">
-        <b-button type="submit" variant="primary" size="md">Update</b-button>
-        <b-button type="button" variant="secondary" class="ml-1" size="md" @click.prevent="cancelForm">Cancel</b-button>
+        <b-button type="submit" variant="primary">Submit</b-button>
+        <b-button type="reset" variant="danger">Reset fields</b-button>
+        <b-button type="button" variant="secondary" @click.prevent="onCancel">Cancel</b-button>
       </div>
     </b-form>
   </div>
@@ -46,15 +47,23 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  props: {
-    job: Object
+  data() {
+    return {
+      job: {
+        name: '',
+        description: '',
+      },
+    }
   },
   methods: {
     async onJobSubmit(event: Event) {
       event.preventDefault()
-      this.$emit('update', this.job)
+      this.$emit('save', this.job)
     },
-    cancelForm() {
+    onReset(): void {
+      Object.keys(this.job).reduce((acc, curr) => ({...acc, [curr]: ''}), {});
+    },
+    onCancel() {
       this.$router.back()
     }
   }

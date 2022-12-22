@@ -10,12 +10,7 @@
 
 import { defineComponent } from 'vue'
 import EditJobForm from '../components/jobs/EditJob.vue'
-
-interface Job {
-  id: number
-  name: string
-  description: string
-}
+import type { Job } from '../types/types'
 
 export default defineComponent({
   components: {
@@ -31,7 +26,6 @@ export default defineComponent({
   },
   async created () {
     const id = this.$route.params.id;
-    console.log('id', id)
     const { data } = await this.$api.get(`/jobs/${id}`);
     this.job = data;
   },

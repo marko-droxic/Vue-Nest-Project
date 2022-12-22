@@ -62,8 +62,18 @@ export default defineComponent({
         console.log(e)
       }
     },
-    exportJobs() {
-      console.log('Export jobbb')
+    async exportJobs() {
+      try {
+        const { data } = await this.$api.get(`/jobs/export`);
+        const csvData = 'data:text/csv;charset=utf-8,' + data.join('\n')
+        const excel = encodeURI(csvData);
+        const link = document.createElement('a');
+        link.setAttribute('href', excel); //Links to CSV File
+        link.setAttribute('download', 'Jobs.csv'); //Filename that CSV is saved as
+        link.click();
+      } catch (e) {
+        console.log(e)
+      }
     },
 
   }

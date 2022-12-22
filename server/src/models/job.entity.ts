@@ -2,10 +2,6 @@ import {
     Entity,
     Column,
     PrimaryGeneratedColumn,
-    CreateDateColumn,
-    UpdateDateColumn,
-    DeleteDateColumn,
-    BeforeUpdate,
     Index,
 } from 'typeorm';
 
