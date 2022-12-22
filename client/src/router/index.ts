@@ -26,7 +26,7 @@ const router = new VueRouter({
     {
       path: "/job/:id",
       name: "job",
-      component: () => import("../pages/Job.vue"),
+      component: () => import("../pages/EditJob.vue"),
     },
     {
       path: '/:catchAll(.*)*',

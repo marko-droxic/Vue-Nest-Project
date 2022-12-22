@@ -1,22 +1,22 @@
 <template>
   <div class="add-job-form">
-    <b-form @submit="onJobSubmit" @reset="onReset">
+    <b-form @submit="onJobSubmit">
       <b-row>
-        <BCol cols="12">
-          <b-form-group
-              id="input-group-1"
-              label="Job name"
-              label-for="input-1"
-          >
-            <b-form-input
-                id="input-1"
-                v-model="job.name"
-                type="text"
-                placeholder="Enter name"
-                required
-            ></b-form-input>
-          </b-form-group>
-        </BCol>
+        <b-col cols="12">
+            <b-form-group
+                id="input-group-1"
+                label="Job name"
+                label-for="input-1"
+            >
+              <b-form-input
+                  id="input-1"
+                  v-model="job.name"
+                  type="text"
+                  placeholder="Enter name"
+                  required
+              ></b-form-input>
+            </b-form-group>
+        </b-col>
       </b-row>
       <b-row>
         <b-col cols="12">
@@ -33,8 +33,8 @@
         </b-col>
       </b-row>
       <div class="mt-3">
-        <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset fields</b-button>
+        <b-button type="submit" variant="primary" size="md">Update</b-button>
+        <b-button type="button" variant="secondary" class="ml-1" size="md" @click.prevent="cancelForm">Cancel</b-button>
       </div>
     </b-form>
   </div>
@@ -60,8 +60,8 @@ export default defineComponent({
       console.log('JOBBB ', this.job)
       const data = await this.$api.get('/hello');
     },
-    onReset() {
-      Object.keys(this.job).reduce((acc, curr) => ({...acc, [curr]: ''}), {});
+    cancelForm() {
+      this.$router.back()
     }
   }
 })

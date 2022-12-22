@@ -4,7 +4,7 @@
 
       <div class="wrapper">
         <h3>
-          You’ve successfully created a project with
+          Vue Jobs Demo
         </h3>
 
         <nav>

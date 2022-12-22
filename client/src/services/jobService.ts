@@ -5,14 +5,17 @@ const jobService = (request: any) => ({
     },
 
     async createJob(jobData: any, handleToast = false) {
-        return request('post', { url: `job`, data: jobData  }, handleToast);
+        return request('post', { url: `jobs`, data: jobData  }, handleToast);
     },
 
     async updateJob(jobId: number, jobData: any,  handleToast = false) {
-        return request('patch', { url: `job/${jobId}`, data: jobData }, handleToast);
+        return request('patch', { url: `jobs/${jobId}`, data: jobData }, handleToast);
     },
 
     async removeJob(jobId: number, handleToast = false) {
-        return request('delete', { url: `job/${jobId}`}, handleToast);
+        return request('delete', { url: `jobs/${jobId}`}, handleToast);
     },
 })
+
+
+export default jobService;
