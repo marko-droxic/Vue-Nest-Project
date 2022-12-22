@@ -28,6 +28,9 @@ Open your default browser and go to:
 http://localhost:8080
 ```
 
+> Notes:
+> TODO: add prettier and eslint config, add ts definitions on frontend, Better folder structure
+
 
 ### The Frontend  is made of routes:
 
