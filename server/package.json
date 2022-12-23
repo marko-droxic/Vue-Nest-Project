@@ -35,12 +35,7 @@
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
     "swagger-ui-express": "^4.2.0",
-<<<<<<< HEAD
-    "typeorm": "0.2.41",
-    "xlsx": "^0.18.5"
-=======
     "typeorm": "0.2.41"
->>>>>>> 22f7711 (fix: downgrade typeorm, nest js dependencies, update job module)
   },
   "devDependencies": {
     "@nestjs/cli": "^8.1.5",
