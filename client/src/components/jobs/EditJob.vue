@@ -28,13 +28,14 @@
                 rows="3"
                 max-rows="6"
                 no-resize
+                required
             ></b-form-textarea>
           </b-form-group>
         </b-col>
       </b-row>
-      <div class="mt-3">
+      <div class="mt-4">
         <b-button type="submit" variant="primary" size="md">Update</b-button>
-        <b-button type="button" variant="secondary" class="ml-1" size="md" @click.prevent="cancelForm">Cancel</b-button>
+        <b-button type="button" variant="secondary" size="md" class="mx-2" @click.prevent="cancelForm">Cancel</b-button>
       </div>
     </b-form>
   </div>

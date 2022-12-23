@@ -17,12 +17,12 @@ export class JobsTable1671666875721 implements MigrationInterface {
                     {
                         name: 'name',
                         type: 'varchar',
-                        isNullable: false,
+                        isNullable: true,
                     },
                     {
                         name: 'description',
                         type: 'varchar',
-                        isNullable: false,
+                        isNullable: true,
                     },
                 ],
             }),

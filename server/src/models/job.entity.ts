@@ -11,10 +11,10 @@ export class Jobs {
     id: number;
 
     @Index()
-    @Column()
+    @Column({nullable: true})
     name: string;
 
     @Index()
-    @Column()
+    @Column({nullable: true})
     description: string;
 }

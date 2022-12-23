@@ -1,6 +1,5 @@
 import Vue from "vue";
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
-import * as VeeValidate from "vee-validate";
 import axios from "./plugins/axios"
 import App from "./App.vue";
 import router from "./router";
@@ -24,5 +23,5 @@ const app = new Vue({
   render: (h) => h(App),
 })
 
-const dd = app.$mount("#app")
+app.$mount("#app")
 

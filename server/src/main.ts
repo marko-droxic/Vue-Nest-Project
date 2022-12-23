@@ -3,7 +3,6 @@ import { AppModule } from './app.module';
 import * as fs from 'fs';
 import {
   DocumentBuilder,
-  SwaggerDocumentOptions,
   SwaggerModule,
 } from '@nestjs/swagger';
 
@@ -29,8 +28,8 @@ async function bootstrap() {
 
   app.enableCors({
     credentials: true,
-    origin: [FRONT_URL],
-  }); //  interact w/ vue js which is on a different port
+    origin: [FRONT_URL], // enable cors for vue client
+  });
   await app.listen(3000)
 }
 bootstrap();

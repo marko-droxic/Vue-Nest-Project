@@ -25,6 +25,7 @@
                 id="textarea"
                 v-model="job.description"
                 placeholder="Enter description..."
+                required
                 rows="3"
                 max-rows="6"
                 no-resize
@@ -32,9 +33,9 @@
           </b-form-group>
         </b-col>
       </b-row>
-      <div class="mt-3">
+      <div class="mt-4">
         <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset fields</b-button>
+        <b-button type="reset" variant="danger" class="mx-2">Reset fields</b-button>
         <b-button type="button" variant="secondary" @click.prevent="onCancel">Cancel</b-button>
       </div>
     </b-form>

@@ -9,15 +9,16 @@
 
 import { defineComponent } from 'vue'
 import AddJob from '../components/jobs/AddJob.vue'
+import type { Job } from '../types/types'
 
 export default defineComponent({
   components: {
     AddJob
   },
   methods: {
-    async onSaveJob() {
+    async onSaveJob(job: Job) {
       try {
-        const { data } = await this.$api.post('/jobs', this.job);
+        const { data } = await this.$api.post('/jobs', job);
         this.$router.back()
       } catch (e) {
         console.log(e)
