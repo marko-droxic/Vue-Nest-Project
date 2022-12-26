@@ -21,7 +21,10 @@ $ docker-compose up --build
 ```
 
 Wait a little till all containers build 
+Wait till server is started
 
+
+After all is finished
 Open your default browser and go to:
 
 ```
@@ -29,7 +32,8 @@ http://localhost:8080
 ```
 
 > Notes:
-> TODO: add prettier and eslint config, add ts definitions on frontend, Better folder structure
+> TODO: add prettier and eslint config, add ts definitions on frontend, Better folder structure, add error handler for api requests on client
+> 
 
 
 ### The Frontend  is made of routes:

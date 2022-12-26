@@ -32,8 +32,12 @@ export default defineComponent({
   methods: {
     async onJobUpdate(jobDto: Job) {
       const { id, name, description } = jobDto;
-      const { data } = await this.$api.patch(`/jobs/${id}`, { name, description });
-      this.$router.push('/jobs')
+      try {
+        const { data } = await this.$api.patch(`/jobs/${id}`, { name, description });
+        this.$router.push('/jobs')
+      } catch (e) {
+        console.log(e)
+      }
 
     },
   }
