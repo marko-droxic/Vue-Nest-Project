@@ -5,12 +5,14 @@
   "username": "root",
   "password": "password",
   "database": "jobs_db",
-  "entities": ["/usr/src/app/src/config/../**/entity/*.{ts,js}"],
+  "entities": ["/usr/src/app/src/config/../**/models/*.{ts,js}"],
   "migrationsTableName": "migration",
   "migrations": ["/usr/src/app/src/config/../**/migration/*.{ts,js}"],
   "cli": {
     "migrationsDir": "src/migration"
   },
+  "seeds": ["src/migrations/seeders/**/*{.ts,.js}"],
+  "factories": ["src/factories/**/*{.ts,.js}"],
   "ssl": false,
   "synchronize": true
 }

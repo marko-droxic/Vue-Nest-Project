@@ -8,3 +8,4 @@ ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY package.json ./
 
 USER node
+

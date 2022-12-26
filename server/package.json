@@ -20,7 +20,10 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migrate:create": "ts-node ./node_modules/typeorm/cli.js migration:create -n",
-    "migrate:up": "ts-node ./node_modules/typeorm/cli.js migration:run"
+    "migrate:up": "ts-node ./node_modules/typeorm/cli.js migration:run -- -d ./ormconfig.json",
+    "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
+    "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
+    "migrate:seed": "npm run migrate:up && npm run seed:run"
   },
   "dependencies": {
     "@nestjs/common": "8.2.3",
@@ -30,14 +33,17 @@
     "@nestjs/typeorm": "8.0.2",
     "@nestjsx/crud": "^5.0.0-alpha.3",
     "@nestjsx/crud-typeorm": "^5.0.0-alpha.3",
+    "faker": "^6.6.6",
     "pg": "^8.8.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
     "swagger-ui-express": "^4.2.0",
-    "typeorm": "0.2.41"
+    "typeorm": "0.2.41",
+    "typeorm-seeding": "^1.6.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@nestjs/cli": "^8.1.5",
     "@nestjs/schematics": "^8.0.5",
     "@nestjs/testing": "^8.2.3",

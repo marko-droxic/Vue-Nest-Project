@@ -19,7 +19,7 @@ export default defineComponent({
     async onSaveJob(job: Job) {
       try {
         const { data } = await this.$api.post('/jobs', job);
-        this.$router.back()
+        this.$router.push('/jobs')
       } catch (e) {
         console.log(e)
       }
