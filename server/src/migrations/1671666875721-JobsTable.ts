@@ -31,7 +31,7 @@ export class JobsTable1671666875721 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        queryRunner.query(`DROP TABLE jobs`);
+        await queryRunner.query(`DROP TABLE jobs`);
     }
 
 }

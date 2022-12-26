@@ -31,7 +31,7 @@ class ConfigService {
 
             migrationsTableName: 'migration',
 
-            migrations: [__dirname + '/../**/migration/*.{ts,js}'],
+            migrations: [__dirname + '/../**/migrations/*.{ts,js}'],
             synchronize: true,
         };
     }

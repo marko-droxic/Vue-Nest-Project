@@ -22,7 +22,10 @@ services:
       BASE_URL: ${API_URL}
     env_file:
       - credentials.env
-    command: sh -c "rm -rf ./dist && npm install --loglevel=error && npm run start:dev"
+    command: sh -c "rm -rf ./dist 
+              && npm install --loglevel=error 
+              && npm run migrate:seed
+              && npm run start:dev"
     depends_on:
       - postgres
 
@@ -75,6 +78,7 @@ services:
     depends_on:
       - postgres
       - backend
+      - adminer
 
   # Networks
 networks:
