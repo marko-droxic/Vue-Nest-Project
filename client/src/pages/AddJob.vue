@@ -9,7 +9,7 @@
 
 import { defineComponent } from 'vue'
 import AddJob from '../components/jobs/AddJob.vue'
-import type { Job } from '../types/types'
+import type { Job } from '@/types/types'
 
 export default defineComponent({
   components: {
