@@ -10,7 +10,9 @@
 
 import { defineComponent } from 'vue'
 import EditJobForm from '../components/jobs/EditJob.vue'
-import type { Job } from '../types/types'
+import type { Job } from '@/types/types'
+import type  { AxiosError } from 'axios'
+import { isAxiosError } from 'axios'
 
 export default defineComponent({
   components: {
@@ -36,7 +38,15 @@ export default defineComponent({
         const { data } = await this.$api.patch(`/jobs/${id}`, { name, description });
         this.$router.push('/jobs')
       } catch (e) {
-        console.log(e)
+        if (isAxiosError(e)) {
+          const err = e as AxiosError
+          const message = err.response?.data?.message[0]
+          this.$bvToast.toast(message, {
+            title: 'Error',
+            variant: 'danger',
+            solid: true
+          })
+        }
       }
 
     },

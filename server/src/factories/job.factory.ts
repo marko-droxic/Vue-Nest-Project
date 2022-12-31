@@ -6,7 +6,7 @@ define(Jobs, (fake: typeof faker) => {
 
     const job = new Jobs()
 
-    job.name = fake.lorem.words(3);
+    job.name = fake.lorem.word({ length: { min: 6, max: 20 }, strategy: "fail" });
 
     job.description = fake.lorem.text();
 

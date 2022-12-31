@@ -7,9 +7,9 @@
   "database": "jobs_db",
   "entities": ["/usr/src/app/src/config/../**/models/*.{ts,js}"],
   "migrationsTableName": "migration",
-  "migrations": ["/usr/src/app/src/config/../**/migration/*.{ts,js}"],
+  "migrations": ["/usr/src/app/src/config/../**/migrations/*.{ts,js}"],
   "cli": {
-    "migrationsDir": "src/migration"
+    "migrationsDir": "src/migrations"
   },
   "seeds": ["src/migrations/seeders/**/*{.ts,.js}"],
   "factories": ["src/factories/**/*{.ts,.js}"],

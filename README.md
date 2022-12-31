@@ -23,6 +23,8 @@ $ docker-compose up --build
 Wait a little till all containers build 
 Wait till server is started
 
+> Note: Sometimes containers stuck, so just force all of them to stop and run `docker-compose up`
+
 
 After all is finished
 Open your default browser and go to:

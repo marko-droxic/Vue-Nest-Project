@@ -3,3 +3,9 @@ export interface Job {
     name: string
     description: string
 }
+
+
+export interface JobData {
+    name: string
+    description: string
+}
