@@ -3,6 +3,7 @@ import {MigrationInterface, QueryRunner, Table} from "typeorm";
 export class JobsTable1671666875721 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
+        console.log('RUnning migrationssss')
         await queryRunner.createTable(
             new Table({
                 name: 'jobs',
@@ -17,12 +18,12 @@ export class JobsTable1671666875721 implements MigrationInterface {
                     {
                         name: 'name',
                         type: 'varchar',
-                        isNullable: true,
+                        isNullable: false,
                     },
                     {
                         name: 'description',
                         type: 'varchar',
-                        isNullable: true,
+                        isNullable: false,
                     },
                 ],
             }),
